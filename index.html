@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taha Jouda — Technicien Systèmes &amp; Réseaux</title>
+<meta name="description" content="Portfolio de Taha Jouda, étudiant DTS Infrastructure Systèmes & Réseaux à l'OFPPT Casablanca. Active Directory, virtualisation VMware, projets full-stack.">
+<style>
+  :root {
+    --bg: #f6f8fb; --panel: #ffffff; --line: #e2e8f0;
+    --navy: #0b2545; --ink: #1e293b; --muted: #5b6b82;
+    --blue: #1d6ff2; --blue-dark: #1559c7; --blue-soft: #e8f1fe;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: 'Segoe UI', Inter, system-ui, -apple-system, sans-serif; line-height: 1.65; }
+  a { color: inherit; }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+
+  /* nav */
+  nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .logo { font-weight: 800; font-size: 17px; letter-spacing: .04em; text-decoration: none; color: var(--navy); }
+  .logo b { color: var(--blue); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--muted); font-size: 14.5px; font-weight: 600; transition: color .2s; }
+  .nav-links a:hover { color: var(--blue); }
+  @media (max-width: 760px) { .nav-links { display: none; } }
+
+  /* hero */
+  .hero { padding: 90px 0 70px; background: linear-gradient(180deg, #eaf1fb 0%, var(--bg) 100%); border-bottom: 1px solid var(--line); }
+  .kicker { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-dark); background: var(--blue-soft); border: 1px solid #c9defc; padding: 8px 18px; border-radius: 999px; margin-bottom: 24px; }
+  .kicker::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 4px rgba(34,197,94,.18); }
+  .hero h1 { font-size: clamp(40px, 6.5vw, 68px); line-height: 1.06; letter-spacing: -.02em; font-weight: 800; color: var(--navy); }
+  .hero h1 span { color: var(--blue); }
+  .hero .role { font-size: clamp(17px, 2.4vw, 22px); color: var(--muted); margin: 16px 0 6px; font-weight: 500; }
+  .hero p.lead { max-width: 640px; color: var(--muted); font-size: 16.5px; }
+  .cta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 32px; }
+  .btn { display: inline-block; padding: 14px 30px; border-radius: 10px; font-weight: 700; font-size: 15px; text-decoration: none; transition: transform .15s, box-shadow .15s, background .2s; }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(29,111,242,.22); }
+  .btn.primary { background: var(--blue); color: #fff; }
+  .btn.primary:hover { background: var(--blue-dark); }
+  .btn.ghost { background: var(--panel); color: var(--navy); border: 1.5px solid var(--line); }
+  .btn.ghost:hover { border-color: var(--blue); box-shadow: none; }
+  .hero-meta { display: flex; gap: 40px; flex-wrap: wrap; margin-top: 42px; }
+  .hero-meta div strong { display: block; font-size: 30px; color: var(--navy); }
+  .hero-meta div span { font-size: 13.5px; color: var(--muted); }
+
+  /* sections */
+  section.block { padding: 70px 0; }
+  section.block.alt { background: var(--panel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .sec-head { margin-bottom: 34px; }
+  .sec-head .num { color: var(--blue); font-weight: 800; font-size: 13px; letter-spacing: .2em; }
+  .sec-head h2 { font-size: clamp(27px, 3.8vw, 38px); letter-spacing: -.01em; margin-top: 8px; color: var(--navy); }
+  .sec-head p { color: var(--muted); max-width: 620px; margin-top: 8px; }
+
+  /* about */
+  .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 36px; align-items: start; }
+  @media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; } }
+  .about-grid p { color: var(--muted); margin-bottom: 16px; }
+  .about-grid p strong { color: var(--ink); }
+  .fact { background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--blue); border-radius: 12px; padding: 18px 22px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(11,37,69,.05); }
+  section.block.alt .fact { background: var(--bg); }
+  .fact h4 { font-size: 12px; text-transform: uppercase; letter-spacing: .12em; color: var(--blue); margin-bottom: 4px; }
+  .fact p { margin: 0; font-size: 15px; color: var(--ink); }
+
+  /* skills */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+  .skill-card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 26px; border-top: 4px solid var(--blue); box-shadow: 0 4px 14px rgba(11,37,69,.06); transition: transform .2s, box-shadow .2s; }
+  .skill-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(11,37,69,.12); }
+  .skill-card h3 { font-size: 17px; margin-bottom: 14px; color: var(--navy); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { font-size: 13px; font-weight: 600; background: var(--blue-soft); color: var(--blue-dark); padding: 6px 14px; border-radius: 999px; }
+
+  /* projects */
+  .proj { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 32px; margin-bottom: 20px; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: start; box-shadow: 0 4px 14px rgba(11,37,69,.05); transition: box-shadow .2s, transform .2s; }
+  .proj:hover { box-shadow: 0 12px 30px rgba(11,37,69,.1); transform: translateY(-2px); }
+  @media (max-width: 760px) { .proj { grid-template-columns: 1fr; } }
+  .proj .tag { font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); }
+  .proj h3 { font-size: 22px; margin: 10px 0; color: var(--navy); }
+  .proj p { color: var(--muted); font-size: 15.5px; max-width: 640px; }
+  .proj .stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .proj .stack .chip { background: var(--bg); color: var(--muted); border: 1px solid var(--line); }
+  .proj .links { display: flex; gap: 10px; }
+  .proj .links a { font-size: 14px; font-weight: 700; text-decoration: none; color: var(--blue); border: 1.5px solid var(--blue); padding: 10px 22px; border-radius: 10px; white-space: nowrap; transition: background .2s, color .2s; }
+  .proj .links a:hover { background: var(--blue); color: #fff; }
+  .status { display: inline-block; font-size: 11.5px; font-weight: 800; padding: 5px 13px; border-radius: 999px; margin-left: 10px; vertical-align: middle; letter-spacing: .04em; }
+  .status.done { background: #dcfce7; color: #15803d; }
+  .status.wip { background: #fef3c7; color: #b45309; }
+
+  /* timeline */
+  .timeline { position: relative; padding-left: 32px; max-width: 760px; }
+  .timeline::before { content: ''; position: absolute; left: 9px; top: 8px; bottom: 8px; width: 2px; background: #c9defc; }
+  .t-item { position: relative; margin-bottom: 32px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 24px 28px; box-shadow: 0 4px 14px rgba(11,37,69,.05); }
+  .t-item::before { content: ''; position: absolute; left: -29px; top: 30px; width: 14px; height: 14px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 5px rgba(29,111,242,.15); }
+  .t-item .date { font-size: 12.5px; color: var(--blue); font-weight: 800; letter-spacing: .1em; }
+  .t-item h3 { font-size: 19px; margin: 6px 0 6px; color: var(--navy); }
+  .t-item p { color: var(--muted); font-size: 15px; }
+
+  /* contact */
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .c-card { background: var(--blue); border-radius: 16px; padding: 26px; text-decoration: none; transition: transform .2s, background .2s; display: block; color: #fff; }
+  .c-card:hover { transform: translateY(-4px); background: var(--blue-dark); }
+  .c-card h4 { font-size: 12px; text-transform: uppercase; letter-spacing: .14em; opacity: .75; margin-bottom: 8px; }
+  .c-card p { font-size: 16.5px; font-weight: 700; word-break: break-word; }
+
+  footer { background: var(--navy); color: #b9c6da; padding: 32px 0; font-size: 14px; margin-top: 20px; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">TAHA<b>.</b>JOUDA</a>
+    <ul class="nav-links">
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#parcours">Parcours</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <span class="kicker">Disponible pour un stage PFE</span>
+    <h1>Taha Jouda<br><span>Technicien Systèmes &amp; Réseaux</span></h1>
+    <p class="role">Étudiant DTS Infrastructure Systèmes &amp; Réseaux — OFPPT Casablanca</p>
+    <p class="lead">J'apprends en construisant : laboratoires Active Directory, virtualisation VMware ESXi, et projets web full-stack déployés en production. À la recherche d'un stage PFE en administration systèmes &amp; réseaux.</p>
+    <div class="cta">
+      <a class="btn primary" href="cv-taha-jouda.pdf" download>Télécharger mon CV</a>
+      <a class="btn ghost" href="#contact">Me contacter</a>
+    </div>
+    <div class="hero-meta">
+      <div><strong>3+</strong><span>projets techniques</span></div>
+      <div><strong>2</strong><span>ans de formation DTS</span></div>
+      <div><strong>4</strong><span>technologies de virtualisation</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="block reveal" id="apropos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="num">01 — À PROPOS</div>
+      <h2>Profil</h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>Étudiant en <strong>2ᵉ année DTS Infrastructure Systèmes &amp; Réseaux</strong> à l'OFPPT de Casablanca, je me forme à l'administration de systèmes Windows et Linux, aux réseaux d'entreprise et à la virtualisation.</p>
+        <p>Ma méthode : <strong>la pratique avant la théorie</strong>. Chaque notion étudiée se termine dans un lab — un contrôleur de domaine, un hyperviseur ESXi, un script d'automatisation — parce qu'on ne maîtrise vraiment que ce qu'on a cassé puis réparé soi-même.</p>
+        <p>Je cherche un <strong>stage PFE</strong> en administration systèmes &amp; réseaux, support N2 ou virtualisation, à Casablanca.</p>
+      </div>
+      <div>
+        <div class="fact"><h4>Localisation</h4><p>Casablanca, Maroc</p></div>
+        <div class="fact"><h4>Langues</h4><p>Français · Anglais · Arabe / Darija</p></div>
+        <div class="fact"><h4>Centres d'intérêt</h4><p>Homelab, automatisation (n8n), cybersécurité défensive</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt reveal" id="competences">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="num">02 — COMPÉTENCES</div>
+      <h2>Ce que je sais faire</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Systèmes</h3>
+        <div class="chips">
+          <span class="chip">Windows Server 2019</span><span class="chip">Active Directory</span><span class="chip">DNS / DHCP</span><span class="chip">Linux (Debian, Mint)</span><span class="chip">PowerShell</span><span class="chip">Bash</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Réseaux</h3>
+        <div class="chips">
+          <span class="chip">TCP/IP</span><span class="chip">VLAN</span><span class="chip">Routage</span><span class="chip">Cisco Packet Tracer</span><span class="chip">GNS3</span><span class="chip">Wireshark</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Virtualisation</h3>
+        <div class="chips">
+          <span class="chip">VMware ESXi</span><span class="chip">VMware Workstation</span><span class="chip">Proxmox</span><span class="chip">VirtualBox</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Dev &amp; Outils</h3>
+        <div class="chips">
+          <span class="chip">HTML / CSS</span><span class="chip">JavaScript</span><span class="chip">Supabase</span><span class="chip">SQL</span><span class="chip">Docker</span><span class="chip">n8n</span><span class="chip">Git / GitHub</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block reveal" id="projets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="num">03 — PROJETS</div>
+      <h2>Réalisations</h2>
+      <p>Des projets concrets, déployés et documentés — pas des tutoriels suivis à moitié.</p>
+    </div>
+
+    <article class="proj">
+      <div>
+        <span class="tag">Infrastructure · Active Directory</span>
+        <h3>Lab Active Directory — domaine isfo.com <span class="status wip">En cours</span></h3>
+        <p>Déploiement d'un domaine Active Directory complet sous Windows Server 2019 : contrôleur de domaine, gestion des utilisateurs via ADUC, stratégie de sauvegarde des VM, préparation d'un second DC avec transfert des rôles FSMO.</p>
+        <div class="stack"><span class="chip">Windows Server 2019</span><span class="chip">AD DS</span><span class="chip">DNS</span><span class="chip">VMware</span></div>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div>
+        <span class="tag">Full-stack · Web</span>
+        <h3>Tahathegoat — boutique de cours en ligne <span class="status done">En production</span></h3>
+        <p>Boutique e-learning complète : catalogue, panier, authentification, achats, lecteur de cours avec suivi de progression, codes promo et panneau d'administration. Frontend statique sur GitHub Pages, backend Supabase (PostgreSQL + Row Level Security).</p>
+        <div class="stack"><span class="chip">JavaScript</span><span class="chip">Supabase</span><span class="chip">PostgreSQL</span><span class="chip">GitHub Pages</span></div>
+      </div>
+      <div class="links">
+        <a href="https://jouda2005.github.io/Tahag/" target="_blank" rel="noopener">Voir le site →</a>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div>
+        <span class="tag">Virtualisation · Homelab</span>
+        <h3>Home lab VMware ESXi <span class="status done">Opérationnel</span></h3>
+        <p>Hyperviseur bare-metal type 1 sur machine dédiée : création de VM, snapshots, réseau virtuel (vSwitch, port groups), stratégie de sauvegarde 3-2-1. Mon terrain de jeu pour tout casser sans conséquences.</p>
+        <div class="stack"><span class="chip">VMware ESXi</span><span class="chip">vSwitch</span><span class="chip">Snapshots</span><span class="chip">Sauvegarde 3-2-1</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="block alt reveal" id="parcours">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="num">04 — PARCOURS</div>
+      <h2>Formation</h2>
+    </div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="date">2025 — 2027</div>
+        <h3>DTS Infrastructure Systèmes &amp; Réseaux</h3>
+        <p>OFPPT, Casablanca — Technicien Spécialisé (Bac+2). Administration Windows/Linux, réseaux, virtualisation, cybersécurité (PSSI, contrôle d'accès AAA, gestion des risques), scripting shell, SQL.</p>
+      </div>
+      <div class="t-item">
+        <div class="date">2026 — OBJECTIF</div>
+        <h3>Stage PFE — Administration Systèmes &amp; Réseaux</h3>
+        <p>À la recherche d'un stage de fin d'études à Casablanca : administration systèmes, support informatique N2, ou virtualisation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block reveal" id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="num">05 — CONTACT</div>
+      <h2>Discutons-en</h2>
+      <p>Un stage, une opportunité, ou juste envie de parler homelab — ma boîte mail est ouverte.</p>
+    </div>
+    <div class="contact-grid">
+      <a class="c-card" href="mailto:Tjouda13@gmail.com"><h4>Email</h4><p>Tjouda13@gmail.com</p></a>
+      <a class="c-card" href="tel:+212772453916"><h4>Téléphone</h4><p>+212 772 453 916</p></a>
+      <a class="c-card" href="https://wa.me/212772453916" target="_blank" rel="noopener"><h4>WhatsApp</h4><p>Discuter directement</p></a>
+      <a class="c-card" href="https://github.com/jouda2005" target="_blank" rel="noopener"><h4>GitHub</h4><p>github.com/jouda2005</p></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Taha Jouda — Casablanca, Maroc</span>
+    <span>Conçu et construit à la main.</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function (el) { el.classList.add('visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function (el) { io.observe(el); });
+  }());
+</script>
+</body>
+</html>
